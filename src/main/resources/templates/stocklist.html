@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link th:href="@{/bootstrap/css/bootstrap.css}" href="../static/bootstrap/css/bootstrap.css" rel="stylesheet"/>
+    <link th:href="@{/bootstrap/css/bootstrap-theme.css}" href="../static/bootstrap/css/bootstrap-theme.css" rel="stylesheet"/>
+    <script th:src="@{/script/jquery-3.1.1.min.js}" src="../static/scripts/jquery-3.1.1.min.js"></script>
+    <script th:src="@{/bootstrap/js/bootstrap.js}" src="../static/bootstrap/js/bootstrap.js"></script>
+    <!--<link rel="stylesheet" href="static/css/bootstrap-theme.min.css" />-->
+    <meta charset="UTF-8">
+    <title>stock list</title>
+</head>
+<body>
+<ul class="nav nav-tabs">
+    <li role="presentation" class="active"><a href="#">Home</a></li>
+    <li role="presentation"><a href="#">Profile</a></li>
+    <li role="presentation"><a href="#">Messages</a></li>
+</ul>
+<div style="text-align: center;margin:0 auto;width: 1000px; ">
+    <h1>股票列表</h1>
+    <table class="table table-bordered table-hover" width="100%" border="1" cellspacing="1" cellpadding="0">
+        <tr>
+            <td>代码</td>
+            <td>名称</td>
+        </tr>
+        <!--/*@thymesVar id="learnList" type=""*/-->
+        <tr th:each="stock : ${stocklist}">
+            <td th:text="${stock.code}"></td>
+            <td th:text="${stock.name}"></td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>

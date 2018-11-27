@@ -12,6 +12,8 @@ import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,6 +30,7 @@ import java.util.List;
  */
 @Service
 public class StockServiceImpl implements StockService {
+    private static Logger logger = LoggerFactory.getLogger(StockServiceImpl.class);
     @Autowired
     private StockRepository stockRepository;
 
@@ -59,7 +62,9 @@ public class StockServiceImpl implements StockService {
         return new Stock();
     }
     public void insertSz() throws Exception {
-        String path = "/Users/mengxiansen/job/study/stock/shenshi.xlsx";
+        String relativelyPath = Thread.currentThread().getContextClassLoader().getResource("").getPath();
+        String path = relativelyPath + "/doc/shenshi.xlsx";
+        logger.info("path = {}", path);
         FileInputStream  fileIn = new FileInputStream(path);
         //POIFSFileSystem fs = new POIFSFileSystem(fileIn);
         XSSFWorkbook wb = new XSSFWorkbook(fileIn);
@@ -152,8 +157,10 @@ public class StockServiceImpl implements StockService {
     }
 
     public void insertSh() throws Exception {
-
-        FileInputStream  fileIn = new FileInputStream("/Users/mengxiansen/job/study/stock/hushi.txt.csv.xlsx");
+        String relativelyPath = Thread.currentThread().getContextClassLoader().getResource("").getPath();
+        String path = relativelyPath + "/doc/hushi.txt.csv.xlsx";
+        logger.info("path = {}", path);
+        FileInputStream  fileIn = new FileInputStream(path);
         //POIFSFileSystem fs = new POIFSFileSystem(fileIn);
         XSSFWorkbook wb = new XSSFWorkbook(fileIn);
         int sheetNum = wb.getNumberOfSheets();

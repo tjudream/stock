@@ -515,7 +515,7 @@ public class BalanceSheet {
     /**
      * 负债合计(万元)
      */
-    @Column(name = "abc", columnDefinition = "int(10)")
+    @Column(name = "total_liability", columnDefinition = "int(10)")
     private long totalLiability;
     /**
      * 实收资本(或股本)(万元)
@@ -570,7 +570,7 @@ public class BalanceSheet {
     /**
      * 归属于母公司股东权益合计(万元)
      */
-    @Column(name = "Total equity attributable to the parent company")
+    @Column(name = "total_equity_attributable_to_the_parent_company")
     private long totalEquityAttributableToTheParentCompany;
     /**
      * 少数股东权益(万元)
